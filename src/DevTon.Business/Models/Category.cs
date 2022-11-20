@@ -15,5 +15,7 @@ namespace DevTon.Business.Models
 
         public TypeTransaction TypeTransaction { get; set; }
 
+        public IEnumerable <Transaction> Transactions { get; set; }
+
     }
 }

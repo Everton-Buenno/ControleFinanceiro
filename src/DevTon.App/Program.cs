@@ -1,5 +1,7 @@
 using DevTon.App.Data;
+using DevTon.Business.Interfaces;
 using DevTon.Data.Context;
+using DevTon.Data.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +19,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DataContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddScoped<DataContext>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+
 
 var app = builder.Build();
 
